@@ -57,7 +57,10 @@ function Remove-BloatwareAppsList() {
         # Default Windows 11 apps
         "Clipchamp.Clipchamp"				     # Clipchamp – Video Editor
         "Microsoft.OutlookForWindows"            # Microsoft Outlook
-        "M*S*Teams"                              # Microsoft Teams (24H2 or older)
+        "MSTeams"                                 # Microsoft Teams (new, Store app)
+        "M*S*Teams"                              # Microsoft Teams (free/classic, phased out)
+        "Microsoft.Windows.Ai.Copilot.Provider"   # Copilot app provider (25H2+)
+        "Microsoft.WindowsBackupClient"           # Windows Backup app (24H2+)
         "MicrosoftWindows.Client.WebExperience"  # Taskbar Widgets
 
         # [DIY] Remove the # to Uninstall

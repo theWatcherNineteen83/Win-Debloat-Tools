@@ -8,11 +8,11 @@ function Remove-CapabilitiesList() {
     )
 
     $DisableCapabilities = [System.Collections.ArrayList] @(
-        "App.StepsRecorder*"                # Steps Recorder
+        "App.StepsRecorder*"                # Steps Recorder (removed from Windows in 25H2)
         "Browser.InternetExplorer*"         # Internet Explorer (Also has on Optional Features)
         "MathRecognizer*"                   # Math Recognizer
         "Microsoft.Windows.PowerShell.ISE*" # PowerShell ISE
-        "Microsoft.Windows.WordPad*"        # WordPad
+        "Microsoft.Windows.WordPad*"        # WordPad (removed from Windows in 25H2)
         "Print.Fax.Scan*"                   # Fax features
         "Print.Management.Console*"         # printmanagement.msc
     )

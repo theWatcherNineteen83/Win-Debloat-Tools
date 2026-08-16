@@ -19,6 +19,11 @@ function Main() {
 
     Process {
         Clear-Host
+        # Guard: refuse to run on ARM/ARM64, it breaks the installation (issue #97)
+        If ($env:PROCESSOR_ARCHITECTURE -like "*ARM*") {
+            Write-Host "[!] ARM/ARM64 is NOT supported by this tool. Aborting to avoid breaking your installation (see issue #97)." -ForegroundColor Red
+            exit 1
+        }
         Request-AdminPrivilege # Check admin rights
         Get-ChildItem -Recurse $PSScriptRoot\*.ps*1 | Unblock-File
 

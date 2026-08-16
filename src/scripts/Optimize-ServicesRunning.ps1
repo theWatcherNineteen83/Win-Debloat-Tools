@@ -24,8 +24,6 @@ function Optimize-ServicesRunning() {
         "Fax"                                       # DEFAULT: Manual    | Fax Service
         "fhsvc"                                     # DEFAULT: Manual    | File History Service
         "GraphicsPerfSvc"                           # DEFAULT: Manual    | Graphics performance monitor service
-        "HomeGroupListener"                         # NOT FOUND (Win 10+)| HomeGroup Listener
-        "HomeGroupProvider"                         # NOT FOUND (Win 10+)| HomeGroup Provider
         "lfsvc"                                     # DEFAULT: Manual    | Geolocation Service
         "MapsBroker"                                # DEFAULT: Automatic | Downloaded Maps Manager
         "PcaSvc"                                    # DEFAULT: Automatic | Program Compatibility Assistant (PCA)

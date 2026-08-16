@@ -53,7 +53,7 @@ Code located in the `main` branch is considered bleeding-edge, but big features/
         <td>
             <h4><a href="https://github.com/LeDragoX/Win-Debloat-Tools/archive/main.zip">⬇️ Main</a></h4>(Current)
         </td>
-        <td rowspan="2">24H2 or Older</td>
+        <td rowspan="2">25H2 or Older</td>
         <td rowspan="2">Home / Pro</td>
         <td rowspan="2">
           x86/x64 ONLY<br>
