@@ -56,6 +56,7 @@ function Set-ItemPropertyVerified() {
         }
 
         Write-Verbose "> $ScriptBlock"
+        Write-DebugLog "Registry SET: $ScriptBlock"
         Invoke-Expression "$ScriptBlock"
     }
 }

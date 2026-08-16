@@ -30,9 +30,11 @@ function Set-ScheduledTaskState() {
 
             If ($State -eq 'Disabled') {
                 Write-Status -Types "-", $TweakType -Status "Disabling the $ScheduledTask task..."
+                Write-DebugLog "ScheduledTask DISABLE: $ScheduledTask"
                 Get-ScheduledTask -TaskName (Split-Path -Path $ScheduledTask -Leaf) | Where-Object State -Like "R*" | Disable-ScheduledTask # R* = Ready/Running
             } ElseIf ($State -eq 'Enabled') {
                 Write-Status -Types "+", $TweakType -Status "Enabling the $ScheduledTask task..."
+                Write-DebugLog "ScheduledTask ENABLE: $ScheduledTask"
                 Get-ScheduledTask -TaskName (Split-Path -Path $ScheduledTask -Leaf) | Where-Object State -Like "Disabled" | Enable-ScheduledTask
             }
         }

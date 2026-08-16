@@ -19,6 +19,7 @@ function Remove-UWPApp() {
             }
 
             Write-Status -Types "-", $TweakType -Status "Trying to remove $AppxPackage from ALL users..."
+            Write-DebugLog "App REMOVE: $AppxPackage"
             Get-AppxPackage -AllUsers -Name "$AppxPackage" | Remove-AppxPackage -AllUsers
             Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "$AppxPackage" | Remove-AppxProvisionedPackage -Online -AllUsers
         }

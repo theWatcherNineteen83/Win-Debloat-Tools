@@ -35,9 +35,11 @@ function Set-OptionalFeatureState() {
 
             If ($State -eq 'Disabled') {
                 Write-Status -Types "-", $TweakType -Status "Uninstalling the $OptionalFeature ($((Get-WindowsOptionalFeature -Online -FeatureName $OptionalFeature).DisplayName)) optional feature..."
+                Write-DebugLog "OptionalFeature DISABLE: $OptionalFeature"
                 Get-WindowsOptionalFeature -Online -FeatureName $OptionalFeature | Where-Object State -Like "Enabled" | Disable-WindowsOptionalFeature -Online -NoRestart -Remove
             } ElseIf ($State -eq 'Enabled') {
                 Write-Status -Types "+", $TweakType -Status "Installing the $OptionalFeature ($((Get-WindowsOptionalFeature -Online -FeatureName $OptionalFeature).DisplayName)) optional feature..."
+                Write-DebugLog "OptionalFeature ENABLE: $OptionalFeature"
                 Get-WindowsOptionalFeature -Online -FeatureName $OptionalFeature | Where-Object State -Like "Disabled*" | Enable-WindowsOptionalFeature -Online -NoRestart
             }
         }

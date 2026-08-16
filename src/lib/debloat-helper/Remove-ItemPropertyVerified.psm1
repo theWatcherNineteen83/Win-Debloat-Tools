@@ -60,6 +60,7 @@ function Remove-ItemPropertyVerified() {
                     }
 
                     Write-Verbose "> $ScriptBlock"
+                    Write-DebugLog "Registry REMOVE: $ScriptBlock"
                     Invoke-Expression "$ScriptBlock"
                     $ScriptBlock = "Remove-ItemProperty"
                 } Else {

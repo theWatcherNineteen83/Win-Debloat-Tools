@@ -86,6 +86,24 @@ function Write-Status() {
     }
 }
 
+function Write-DebugLog() {
+    [CmdletBinding()]
+    param (
+        [Parameter(Position = 0)]
+        [System.Object] $Object = ''
+    )
+
+    If ($env:WINDT_DEBUG -eq '1') {
+        $Line = "[DEBUG] $Object"
+        Write-Host $Line -ForegroundColor Magenta
+        $LogFile = "$env:TEMP\Win-Debloat-Tools\logs\WinDebloatTools-debug.log"
+        If (!(Test-Path (Split-Path $LogFile))) {
+            New-Item -Path (Split-Path $LogFile) -ItemType Directory -Force | Out-Null
+        }
+        Add-Content -Path $LogFile -Value $Line -ErrorAction SilentlyContinue
+    }
+}
+
 function Write-Style() {
     [CmdletBinding()]
     param (

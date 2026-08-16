@@ -23,9 +23,11 @@ function Set-CapabilityState() {
 
             If ($State -eq 'Disabled') {
                 Write-Status -Types "-", $TweakType -Status "Uninstalling the $Capability ($((Get-WindowsCapability -Online -Name $Capability).DisplayName)) capability..."
+                Write-DebugLog "Capability DISABLE: $Capability"
                 Get-WindowsCapability -Online -Name "$Capability" | Where-Object State -eq "Installed" | Remove-WindowsCapability -Online
             } ElseIf ($State -eq 'Enabled') {
                 Write-Status -Types "+", $TweakType -Status "Installing the $Capability ($((Get-WindowsCapability -Online -Name $Capability).DisplayName)) capability..."
+                Write-DebugLog "Capability ENABLE: $Capability"
                 Get-WindowsCapability -Online -Name "$Capability" | Where-Object State -eq "NotPresent" | Add-WindowsCapability -Online
             }
         }

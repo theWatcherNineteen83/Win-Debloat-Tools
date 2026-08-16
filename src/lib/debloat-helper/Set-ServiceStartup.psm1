@@ -34,6 +34,7 @@ function Set-ServiceStartup() {
             }
 
             Write-Status -Types "@", $TweakType -Status "Setting $Service ($((Get-Service $Service).DisplayName)) as '$State' on Startup..."
+            Write-DebugLog "Service $Service -> $State"
             Get-Service -Name "$Service" -ErrorAction SilentlyContinue | Set-Service -StartupType $State
         }
     }

@@ -7,7 +7,8 @@ function Main() {
     param (
         [Parameter(Position = 0)]
         [ValidateSet('CLI', 'GUI')]
-        [String] $Mode = 'GUI'
+        [String] $Mode = 'GUI',
+        [Switch] $DebugLog
     )
 
     Begin {
@@ -15,6 +16,13 @@ function Main() {
         $Script:DoneTitle = "Information"
         $Script:DoneMessage = "Process Completed!"
         $Host.UI.RawUI.WindowTitle = '🚀 Win Debloat Tools'
+
+        If ($DebugLog) {
+            $env:WINDT_DEBUG = '1'
+            $VerbosePreference = 'Continue'
+            $ErrorActionPreference = 'Continue'
+            Write-Host "[DEBUG] Debug logging enabled — every change is logged with path/value." -ForegroundColor Magenta
+        }
     }
 
     Process {
@@ -1729,8 +1737,10 @@ function Show-GUI() {
 }
 
 $Script:ArgsList = $args
-If ($args) {
-    Main -Mode $args[0]
+$ModeArg = $args | Where-Object { $_ -in @('CLI', 'GUI') } | Select-Object -First 1
+$DebugSwitch = ($args -contains '-DebugLog') -or ($args -contains '-DebugLog:$true')
+If ($ModeArg) {
+    Main -Mode $ModeArg -DebugLog:$DebugSwitch
 } Else {
-    Main
+    Main -DebugLog:$DebugSwitch
 }

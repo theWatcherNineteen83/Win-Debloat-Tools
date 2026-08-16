@@ -56,6 +56,7 @@ function Remove-ItemVerified() {
             }
 
             Write-Verbose "> $ScriptBlock"
+            Write-DebugLog "Remove-Item: $ScriptBlock"
             Invoke-Expression "$ScriptBlock"
         } Else {
             Write-Status -Types "?", $TweakType -Status "The path `"$Path`" does not exist." -Warning
