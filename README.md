@@ -92,6 +92,16 @@ _The `Apply Tweaks` button is the main one for debloating._
 Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force; ls -Recurse *.ps*1 | Unblock-File; .\"WinDebloatTools.ps1" 'CLI'
 ```
 
+### **CLI with Debug Logging**
+
+Append `-DebugLog` to log every single change (registry path/value, services, tasks, apps, capabilities) to a dedicated file:
+
+```ps1
+Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force; ls -Recurse *.ps*1 | Unblock-File; .\"WinDebloatTools.ps1" 'CLI' -DebugLog
+```
+
+Debug lines are written to `%LOCALAPPDATA%\Temp\Win-Debloat-Tools\logs\WinDebloatTools-debug.log` (in addition to the monthly transcript).
+
 **[Scripts](./src/scripts) can be run individually, pick what you need.**
 
 ## 🔄️ Roll-Back
@@ -176,6 +186,8 @@ _This section contains tools to solve some Windows problems and get info about h
 - [`Reinstall Pre-Installed Apps`](./src/scripts/Install-DefaultAppsList.ps1): Rebloat Windows with all the Pre-Installed Apps;
 - [`Repair Windows`](./src/scripts/Repair-WindowsSystem.ps1): Try to Completely fix the Windows worst problems via Command Line;
 - [`Show Debloat Info`](./src/scripts/other-scripts/Show-DebloatInfo.ps1): Make an overall check-up from disabled and enabled Windows Components (Compare before and after applying tweaks, it's a great difference);
+- [`Security Scan (MSERT)`](./src/scripts/Invoke-SecurityScanner.ps1): Run a one-time **full** malware scan with Microsoft Safety Scanner (auto-clean). Portable, free, on-demand only — no real-time antivirus. Results at `%SYSTEMROOT%\debug\msert.log`;
+- [`Quick Scan (MSERT)`](./src/scripts/Invoke-SecurityQuickScan.ps1): Faster one-time **quick** scan, checks only active/likely-infected areas. Wrapper around the full scanner (`-QuickScan`);
 
 #### Windows Update ([Can be found here](src/utils/Individual-Tweaks.psm1))
 
