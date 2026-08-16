@@ -220,6 +220,7 @@ function Show-GUI() {
     $ReinstallBloatApps = New-Button -Text "Reinstall Pre-Installed Apps" -Width $LayoutT1.PanelElementWidth -Height $LayoutT1.ButtonHeight -LocationX $LayoutT1.PanelElementX -FontSize $LayoutT1.Heading[3] -ElementBefore $RandomizeSystemColor -MarginTop $LayoutT1.DistanceBetweenElements
     $RepairWindows = New-Button -Text "Repair Windows" -Width $LayoutT1.PanelElementWidth -Height $LayoutT1.ButtonHeight -LocationX $LayoutT1.PanelElementX -FontSize $LayoutT1.Heading[3] -ElementBefore $ReinstallBloatApps -MarginTop $LayoutT1.DistanceBetweenElements
     $ShowDebloatInfo = New-Button -Text "Show Debloat Info" -Width $LayoutT1.PanelElementWidth -Height $LayoutT1.ButtonHeight -LocationX $LayoutT1.PanelElementX -FontSize $LayoutT1.Heading[3] -ElementBefore $RepairWindows -MarginTop $LayoutT1.DistanceBetweenElements
+    $SecurityScan = New-Button -Text "Security Scan (MSERT)" -Width $LayoutT1.PanelElementWidth -Height $LayoutT1.ButtonHeight -LocationX $LayoutT1.PanelElementX -FontSize $LayoutT1.Heading[3] -ElementBefore $ShowDebloatInfo -MarginTop $LayoutT1.DistanceBetweenElements -ForeColor $Colors.WarningYellow
 
     # ==> T1 Panel 3
     $ClWindowsUpdate = New-Label -Text "Windows Update" -Width $LayoutT1.PanelElementWidth -Height $LayoutT1.CaptionLabelHeight -LocationX $LayoutT1.PanelElementX -LocationY 0 -FontSize $LayoutT1.Heading[2] -FontStyle 'Bold'
@@ -480,7 +481,7 @@ function Show-GUI() {
     $T1Panel1.Controls.AddRange(@($ClCustomizeFeatures, $CbDarkTheme, $CbActivityHistory, $CbBackgroundsApps, $CbClipboardHistory, $CbClipboardSyncAcrossDevice, $CbCortana, $CbHibernate, $CbLegacyContextMenu, $CbLocationTracking, $CbNewsAndInterest, $CbOldVolumeControl, $CbOnlineSpeechRecognition, $CbPhoneLink, $CbPhotoViewer, $CbSearchAppForUnknownExt, $CbTelemetry, $CbWindowsSpotlight, $CbXboxGameBarDVRandMode))
     $T1Panel2.Controls.AddRange(@($ClDebloatTools, $ApplyTweaks, $UndoTweaks, $DiskCleanUp, $RemoveTemporaryFiles, $RemoveWindowsOld, $RemoveMSEdge, $RemoveOneDrive, $RemoveXbox, $PictureBox1))
     $T1Panel2.Controls.AddRange(@($ClInstallSystemApps, $InstallDolbyAudio, $InstallMicrosoftEdge, $InstallOneDrive, $InstallPaintPaint3D, $InstallPhoneLink, $InstallQuickAssist, $InstallSoundRecorder, $InstallTaskbarWidgets, $InstallUWPWMediaPlayer, $InstallXbox))
-    $T1Panel2.Controls.AddRange(@($ClOtherTools, $RandomizeSystemColor, $ReinstallBloatApps, $RepairWindows, $ShowDebloatInfo))
+    $T1Panel2.Controls.AddRange(@($ClOtherTools, $RandomizeSystemColor, $ReinstallBloatApps, $RepairWindows, $ShowDebloatInfo, $SecurityScan))
     $T1Panel3.Controls.AddRange(@($ClWindowsUpdate, $CbAutomaticWindowsUpdate))
     $T1Panel3.Controls.AddRange(@($ClOptionalFeatures, $CbHyperV, $CbInternetExplorer, $CbPrintToPDFServices, $CbPrintingXPSServices, $CbWindowsMediaPlayer, $CbWindowsSandbox))
     $T1Panel3.Controls.AddRange(@($ClTaskScheduler, $CbFamilySafety))
@@ -632,6 +633,10 @@ function Show-GUI() {
 
     $ShowDebloatInfo.Add_Click( {
             Open-PowerShellFilesCollection -RelativeLocation "src\scripts\other-scripts" -Scripts @("Show-DebloatInfo.ps1") -NoDialog
+        })
+
+    $SecurityScan.Add_Click( {
+            Open-PowerShellFilesCollection -RelativeLocation "src\scripts" -Scripts @("Invoke-SecurityScanner.ps1") -DoneTitle $DoneTitle -DoneMessage $DoneMessage
         })
 
     $CbAutomaticWindowsUpdate.Add_Click( {
