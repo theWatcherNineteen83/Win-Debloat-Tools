@@ -164,11 +164,11 @@ function Show-GUI() {
 
     # ==> Tab 1
     $CurrentPanelIndex = 0
-    $T1Panel1 = New-Panel -Width $LayoutT1.PanelWidth -Height $LayoutT1.PanelHeight -LocationX ($LayoutT1.PanelWidth * $CurrentPanelIndex) -ElementBefore $ClSystemTweaks
+    $T1Panel1 = New-Panel -Width $LayoutT1.PanelWidth -Height $LayoutT1.PanelHeight -LocationX ($LayoutT1.PanelWidth * $CurrentPanelIndex) -ElementBefore $ClSystemTweaks -HasScroll
     $CurrentPanelIndex++
-    $T1Panel2 = New-Panel -Width $LayoutT1.PanelWidth -Height $LayoutT1.PanelHeight -LocationX ($LayoutT1.PanelWidth * $CurrentPanelIndex) -ElementBefore $ClSystemTweaks
+    $T1Panel2 = New-Panel -Width $LayoutT1.PanelWidth -Height $LayoutT1.PanelHeight -LocationX ($LayoutT1.PanelWidth * $CurrentPanelIndex) -ElementBefore $ClSystemTweaks -HasScroll
     $CurrentPanelIndex++
-    $T1Panel3 = New-Panel -Width $LayoutT1.PanelWidth -Height $LayoutT1.PanelHeight -LocationX ($LayoutT1.PanelWidth * $CurrentPanelIndex) -ElementBefore $ClSystemTweaks
+    $T1Panel3 = New-Panel -Width $LayoutT1.PanelWidth -Height $LayoutT1.PanelHeight -LocationX ($LayoutT1.PanelWidth * $CurrentPanelIndex) -ElementBefore $ClSystemTweaks -HasScroll
 
     # ==> T1 Panel 1
     $ClCustomizeFeatures = New-Label -Text "Customize System Features" -Width $LayoutT1.PanelElementWidth -Height $LayoutT1.CaptionLabelHeight -LocationX $LayoutT1.PanelElementX -LocationY 0 -FontSize $LayoutT1.Heading[2] -FontStyle 'Bold'
@@ -258,13 +258,13 @@ function Show-GUI() {
     $ClSoftwareInstall = New-Label -Text "Install/Uninstall" -Width $LayoutT2.TotalWidth -Height $LayoutT2.CaptionLabelHeight -LocationX 0 -FontSize $LayoutT1.Heading[1] -ElementBefore $T3PanelPackageManagersSettings -MarginTop $LayoutT2.DistanceBetweenElements -ForeColor $Colors.LightGreen
 
     $CurrentPanelIndex = 0
-    $T2Panel1 = New-Panel -Width $LayoutT2.PanelWidth -Height $LayoutT2.PanelHeight -LocationX ($LayoutT2.PanelWidth * $CurrentPanelIndex) -ElementBefore $ClSoftwareInstall
+    $T2Panel1 = New-Panel -Width $LayoutT2.PanelWidth -Height $LayoutT2.PanelHeight -LocationX ($LayoutT2.PanelWidth * $CurrentPanelIndex) -ElementBefore $ClSoftwareInstall -HasScroll
     $CurrentPanelIndex++
-    $T2Panel2 = New-Panel -Width $LayoutT2.PanelWidth -Height $LayoutT2.PanelHeight -LocationX ($LayoutT2.PanelWidth * $CurrentPanelIndex) -ElementBefore $ClSoftwareInstall
+    $T2Panel2 = New-Panel -Width $LayoutT2.PanelWidth -Height $LayoutT2.PanelHeight -LocationX ($LayoutT2.PanelWidth * $CurrentPanelIndex) -ElementBefore $ClSoftwareInstall -HasScroll
     $CurrentPanelIndex++
-    $T2Panel3 = New-Panel -Width $LayoutT2.PanelWidth -Height $LayoutT2.PanelHeight -LocationX ($LayoutT2.PanelWidth * $CurrentPanelIndex) -ElementBefore $ClSoftwareInstall
+    $T2Panel3 = New-Panel -Width $LayoutT2.PanelWidth -Height $LayoutT2.PanelHeight -LocationX ($LayoutT2.PanelWidth * $CurrentPanelIndex) -ElementBefore $ClSoftwareInstall -HasScroll
     $CurrentPanelIndex++
-    $T2Panel4 = New-Panel -Width $LayoutT2.PanelWidth -Height $LayoutT2.PanelHeight -LocationX ($LayoutT2.PanelWidth * $CurrentPanelIndex) -ElementBefore $ClSoftwareInstall
+    $T2Panel4 = New-Panel -Width $LayoutT2.PanelWidth -Height $LayoutT2.PanelHeight -LocationX ($LayoutT2.PanelWidth * $CurrentPanelIndex) -ElementBefore $ClSoftwareInstall -HasScroll
 
     # ==> T2 Panel 1
     $UpgradeAll = New-Button -Text "Upgrade All Softwares" -Width $LayoutT2.PanelElementWidth -Height $LayoutT2.ButtonHeight -LocationX $LayoutT2.PanelElementX -LocationY 0 -FontSize $LayoutT2.Heading[3] -FontStyle 'Bold' -ForeColor $Colors.Cyan
